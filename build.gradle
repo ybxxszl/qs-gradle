@@ -1,0 +1,52 @@
+buildscript {
+    ext {
+        SpringBootVersion = '2.1.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${SpringBootVersion}")
+    }
+}
+
+plugins {
+    id 'net.ltgt.apt' version '0.10'
+}
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.wjy'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    maven{
+        url 'http://maven.aliyun.com/nexus/content/groups/public/'
+    }
+    mavenCentral()
+}
+
+dependencies {
+
+    compile 'io.springfox:springfox-swagger2:2.9.2'
+    compile 'io.springfox:springfox-swagger-ui:2.9.2'
+
+    compileOnly 'org.projectlombok:lombok:1.18.4'
+    apt 'org.projectlombok:lombok:1.18.4'
+
+    implementation 'org.freemarker:freemarker:2.3.28'
+
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.0.7.1'
+    implementation 'com.baomidou:mybatis-plus-generator:3.0.7.1'
+
+    implementation 'com.alibaba:druid-spring-boot-starter:1.1.10'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.47'
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.1.2.RELEASE'
+
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.1.2.RELEASE'
+    testCompile	'junit:junit:4.12'
+
+}
